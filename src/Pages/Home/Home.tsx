@@ -17,6 +17,8 @@ export const Home = () => {
     setOffset,
     setSearchInput,
     isRefetching,
+    order,
+    setOrder,
   } = useListCharacter();
 
   const [favoriteCharacters, setFavoriteCharacters] = useState(() => {
@@ -35,7 +37,7 @@ export const Home = () => {
         voce ama - e aqueles que você descobrirá em breve{" "}
       </span>
       <SearchInput setSearchInput={setSearchInput} />
-      <Filter />
+      <Filter filterType={order} setFilterType={setOrder} />
       {isLoading || isRefetching ? (
         <div> Carregando </div>
       ) : (
@@ -61,6 +63,7 @@ export const Home = () => {
       >
         ChangePage
       </button> */}
+
       <Pagination />
     </div>
   );

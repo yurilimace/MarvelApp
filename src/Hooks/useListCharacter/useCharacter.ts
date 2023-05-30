@@ -16,12 +16,15 @@ export const useListCharacter = () => {
 
   const [searchInput, setSearchInput] = useState("");
 
+  const [order, setOrder] = useState("asc");
+
   const params = {
     ts: timeStamp,
     apikey: publicKey,
     hash: hash,
     offset: offset,
     ...(searchInput !== "" && { nameStartsWith: searchInput }),
+    ...(order === "asc" ? { orderBy: "name" } : { orderBy: "-name" }),
   };
 
   const List = async () => {
@@ -34,7 +37,7 @@ export const useListCharacter = () => {
   console.log(searchInput);
 
   const { data, isLoading, isRefetching, refetch } = useQuery(
-    ["characterList", offset, searchInput],
+    ["characterList", offset, searchInput, order],
     () => List()
   );
 
@@ -45,6 +48,8 @@ export const useListCharacter = () => {
     refetch,
     setOffset,
     setSearchInput,
+    order,
+    setOrder,
     limit,
   };
 };

@@ -49,7 +49,6 @@ export const Card = ({
           ) : (
             <img src={UnfavoriteIcon} />
           )}
-          {/* <img src={FavoriteIcon} /> */}
         </button>
       </div>
     </div>
