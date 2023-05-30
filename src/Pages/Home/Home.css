@@ -6,10 +6,6 @@
   padding: 32px;
 }
 
-.Logo {
-  width: 300px;
-}
-
 .CenterLogo {
   display: flex;
 }
@@ -22,50 +18,11 @@
   padding: 0 32px;
 }
 
-.Phrase-container {
-  display: grid;
-  grid-template-columns: 3fr 1fr 1fr;
-  width: 100%;
-}
-
-.SearchInputContainer {
-  width: 100%;
-  padding: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.SearchInput {
-  width: 55%;
-  height: 50px;
-  border-radius: 25px;
-  background-color: #fdecec;
-  border: none;
-  color: #000;
-  background-image: url("../../assets/ic_busca.svg");
-  background-repeat: no-repeat;
-  background-position: 25px;
-
-  padding-left: 4rem;
-}
-
-.SearchInput:focus-visible {
-  outline: none;
-}
-
-.ToggleSwitchContainer {
-  display: flex;
-  align-items: center;
-}
-
-.ToggleSwitchContainer > * {
-  margin-right: 10px;
-}
-
 .CardGridContainer {
   margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 100%;
+  /* height: 400px; */
+  /* overflow-y: scroll; */
 }

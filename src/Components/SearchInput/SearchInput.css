@@ -1,0 +1,28 @@
+.SearchInputContainer {
+  width: 100%;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SearchInput {
+  width: 55%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #fdecec;
+  border: none;
+  color: #fa7c7c;
+  background-image: url("../../assets/ic_busca.svg");
+  background-repeat: no-repeat;
+  background-position: 25px;
+  padding-left: 4rem;
+}
+
+.SearchInput::placeholder {
+  color: #fa7c7c;
+}
+
+.SearchInput:focus-visible {
+  outline: none;
+}

@@ -1,14 +1,18 @@
-import Logo from "../../assets/logo.svg";
-import ToggleSwitch from "../../assets/toggle_off.svg";
-import HeroIcon from "../../assets/ic_heroi.svg";
-import FavoriteIcon from "../../assets/favorito_01.svg";
 import "./Home.css";
-import "./Card.css";
+
+import axios from "axios";
+import { Card } from "../../Components/Card/Card";
+import { Logo } from "../../Components/Logo/Logo";
+import { SearchInput } from "../../Components/SearchInput/SearchInput";
+import { Filter } from "../../Components/Filter/Filter";
 
 export const Home = () => {
+  const element = [
+    3, 7, 12, 9, 5, 1, 8, 6, 2, 4, 15, 11, 17, 14, 10, 13, 19, 16, 20, 18,
+  ];
   return (
     <div className="HomeContainer">
-      <img className="Logo" src={Logo} />
+      <Logo />
       <h2 className="Subtitle">
         <strong> EXPLORE O UNIVERSO </strong>
       </h2>
@@ -16,32 +20,12 @@ export const Home = () => {
         mergulhe no domínio deslumbrante de todos os personagens clássicos que
         voce ama - e aqueles que você descobrirá em breve{" "}
       </span>
-      <div className="SearchInputContainer">
-        <input className="SearchInput" />
-      </div>
-      <div className="Phrase-container">
-        <div className="ToggleSwitchContainer">
-          <span> Encontrados X herois </span>
-        </div>
-        <div className="ToggleSwitchContainer">
-          <img src={HeroIcon} />
-          <span> Ordernar por nome - A/Z </span>
-          <img src={ToggleSwitch} />
-        </div>
-        <div className="ToggleSwitchContainer">
-          <img src={FavoriteIcon} />
-          <span> Somente Favoritos </span>
-        </div>
-      </div>
+      <SearchInput />
+      <Filter />
       <div className="CardGridContainer">
-        <div> Card 1 </div>
-        <div> Card 2 </div>
-        <div> Card 3 </div>
-        <div> Card 4 </div>
-        <div> Card 1 </div>
-        <div> Card 2 </div>
-        <div> Card 3 </div>
-        <div> Card 4 </div>
+        {element.map((el) => (
+          <Card />
+        ))}
       </div>
     </div>
   );

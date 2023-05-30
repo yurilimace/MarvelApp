@@ -1,0 +1,14 @@
+.Phrase-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  width: 100%;
+}
+
+.ToggleSwitchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.ToggleSwitchContainer > * {
+  margin-right: 10px;
+}
