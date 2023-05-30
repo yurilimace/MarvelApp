@@ -17,5 +17,19 @@
 .CardBody {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 32px 8px;
+}
+
+.FavoriteButton {
+  display: flex;
+  align-items: center;
+  width: min-content;
+  height: min-content;
+  background-color: transparent;
+}
+
+.FavoriteButton:focus {
+  border: none;
+  outline: none;
 }

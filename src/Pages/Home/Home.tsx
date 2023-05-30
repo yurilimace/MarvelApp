@@ -6,6 +6,7 @@ import { SearchInput } from "../../Components/SearchInput/SearchInput";
 import { Filter } from "../../Components/Filter/Filter";
 import { useListCharacter } from "../../Hooks/useListCharacter/useCharacter";
 import { useState } from "react";
+import { Pagination } from "../../Components/Pagination/Pagination";
 
 export const Home = () => {
   const {
@@ -17,6 +18,11 @@ export const Home = () => {
     setSearchInput,
     isRefetching,
   } = useListCharacter();
+
+  const [favoriteCharacters, setFavoriteCharacters] = useState(() => {
+    const localStorageData = localStorage.getItem("favoriteCharacters");
+    return localStorageData ? JSON.parse(localStorageData) : [];
+  });
 
   return (
     <div className="HomeContainer">
@@ -36,7 +42,10 @@ export const Home = () => {
         <div className="CardGridContainer">
           {data.map((el: any) => (
             <Card
+              favoriteCharacterList={favoriteCharacters}
+              setFavoriteCharacterList={setFavoriteCharacters}
               key={el.id}
+              id={el.id}
               name={el.name}
               image={el.thumbnail.path + "." + el.thumbnail.extension}
             />
@@ -44,14 +53,15 @@ export const Home = () => {
         </div>
       )}
 
-      <button
+      {/* <button
         onClick={() => {
           setOffset((prevState) => (prevState += limit));
           // refetch();
         }}
       >
         ChangePage
-      </button>
+      </button> */}
+      <Pagination />
     </div>
   );
 };

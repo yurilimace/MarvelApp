@@ -1,0 +1,7 @@
+.PaginationContainer {
+  display: flex;
+}
+
+.PaginationContainer > button {
+  margin-right: 10px;
+}
