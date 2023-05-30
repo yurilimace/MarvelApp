@@ -8,6 +8,7 @@ import { useListCharacter } from "../../Hooks/useListCharacter/useCharacter";
 import { useState } from "react";
 import { Pagination } from "../../Components/Pagination/Pagination";
 import { GridShowcase } from "../../Components/GridShowCase/GridShowCase";
+import { Loading } from "../../Components/Loading/Loading";
 
 export const Home = () => {
   const {
@@ -36,7 +37,7 @@ export const Home = () => {
       </span>
 
       {isLoading || isRefetching ? (
-        <div> Carregando </div>
+        <Loading />
       ) : (
         <>
           <SearchInput setSearchInput={setSearchInput} />

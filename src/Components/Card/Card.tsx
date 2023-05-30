@@ -45,7 +45,10 @@ export const Card = ({
       <img src={image} />
       <div className="CardDivider"></div>
       <div className="CardBody">
-        <span> {name} </span>
+        <span>
+          {" "}
+          <strong> {name} </strong>{" "}
+        </span>
         <FavoriteButton
           onClick={HandleClick}
           favoriteIcon={isFavoriteCharacter}
