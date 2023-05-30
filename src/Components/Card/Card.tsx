@@ -1,14 +1,18 @@
 import FavoriteIcon from "../../assets/favorito_01.svg";
 import "./Card.css";
-export const Card = () => {
+
+interface CardProps {
+  name: string;
+  image: string;
+}
+
+export const Card = ({ name, image }: CardProps) => {
   return (
     <div className="CardContainer">
-      <img
-        src={"http://i.annihil.us/u/prod/marvel/i/mg/a/f0/5202887448860.jpg"}
-      />
+      <img src={image} />
       <div className="CardDivider"></div>
       <div className="CardBody">
-        <span> Carachter Name </span>
+        <span> {name} </span>
         <img src={FavoriteIcon} />
       </div>
     </div>

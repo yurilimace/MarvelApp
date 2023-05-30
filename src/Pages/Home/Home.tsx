@@ -1,15 +1,23 @@
 import "./Home.css";
 
-import axios from "axios";
 import { Card } from "../../Components/Card/Card";
 import { Logo } from "../../Components/Logo/Logo";
 import { SearchInput } from "../../Components/SearchInput/SearchInput";
 import { Filter } from "../../Components/Filter/Filter";
+import { useListCharacter } from "../../Hooks/useListCharacter/useCharacter";
+import { useState } from "react";
 
 export const Home = () => {
-  const element = [
-    3, 7, 12, 9, 5, 1, 8, 6, 2, 4, 15, 11, 17, 14, 10, 13, 19, 16, 20, 18,
-  ];
+  const {
+    data,
+    isLoading,
+    limit,
+    refetch,
+    setOffset,
+    setSearchInput,
+    isRefetching,
+  } = useListCharacter();
+
   return (
     <div className="HomeContainer">
       <Logo />
@@ -20,13 +28,30 @@ export const Home = () => {
         mergulhe no domínio deslumbrante de todos os personagens clássicos que
         voce ama - e aqueles que você descobrirá em breve{" "}
       </span>
-      <SearchInput />
+      <SearchInput setSearchInput={setSearchInput} />
       <Filter />
-      <div className="CardGridContainer">
-        {element.map((el) => (
-          <Card />
-        ))}
-      </div>
+      {isLoading || isRefetching ? (
+        <div> Carregando </div>
+      ) : (
+        <div className="CardGridContainer">
+          {data.map((el: any) => (
+            <Card
+              key={el.id}
+              name={el.name}
+              image={el.thumbnail.path + "." + el.thumbnail.extension}
+            />
+          ))}
+        </div>
+      )}
+
+      <button
+        onClick={() => {
+          setOffset((prevState) => (prevState += limit));
+          // refetch();
+        }}
+      >
+        ChangePage
+      </button>
     </div>
   );
 };
