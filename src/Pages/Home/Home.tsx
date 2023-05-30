@@ -7,6 +7,7 @@ import { Filter } from "../../Components/Filter/Filter";
 import { useListCharacter } from "../../Hooks/useListCharacter/useCharacter";
 import { useState } from "react";
 import { Pagination } from "../../Components/Pagination/Pagination";
+import { GridShowcase } from "../../Components/GridShowCase/GridShowCase";
 
 export const Home = () => {
   const {
@@ -17,14 +18,11 @@ export const Home = () => {
     setOffset,
     setSearchInput,
     isRefetching,
-    order,
-    setOrder,
+    filter,
+    setFilter,
+    favoriteCharacters,
+    setFavoriteCharacters,
   } = useListCharacter();
-
-  const [favoriteCharacters, setFavoriteCharacters] = useState(() => {
-    const localStorageData = localStorage.getItem("favoriteCharacters");
-    return localStorageData ? JSON.parse(localStorageData) : [];
-  });
 
   return (
     <div className="HomeContainer">
@@ -36,33 +34,27 @@ export const Home = () => {
         mergulhe no domínio deslumbrante de todos os personagens clássicos que
         voce ama - e aqueles que você descobrirá em breve{" "}
       </span>
-      <SearchInput setSearchInput={setSearchInput} />
-      <Filter filterType={order} setFilterType={setOrder} />
+
       {isLoading || isRefetching ? (
         <div> Carregando </div>
       ) : (
-        <div className="CardGridContainer">
-          {data.map((el: any) => (
-            <Card
-              favoriteCharacterList={favoriteCharacters}
-              setFavoriteCharacterList={setFavoriteCharacters}
-              key={el.id}
-              id={el.id}
-              name={el.name}
-              image={el.thumbnail.path + "." + el.thumbnail.extension}
-            />
-          ))}
-        </div>
+        <>
+          <SearchInput setSearchInput={setSearchInput} />
+          <Filter
+            filterType={filter}
+            setFilterType={setFilter}
+            favoriteCharactersSize={
+              filter.showFavorite ? favoriteCharacters.length : data.length
+            }
+          />
+          <GridShowcase
+            showFavorite={filter.showFavorite}
+            data={data}
+            favoriteCharacters={favoriteCharacters}
+            setFavoriteCharacters={setFavoriteCharacters}
+          />
+        </>
       )}
-
-      {/* <button
-        onClick={() => {
-          setOffset((prevState) => (prevState += limit));
-          // refetch();
-        }}
-      >
-        ChangePage
-      </button> */}
 
       <Pagination />
     </div>

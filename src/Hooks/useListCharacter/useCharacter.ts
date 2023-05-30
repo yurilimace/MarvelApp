@@ -2,6 +2,7 @@ import md5 from "md5";
 import { useQuery } from "react-query";
 import { BaseAPI } from "../../services";
 import { useState } from "react";
+import { FilterObject } from "../../Components/Filter/Filter";
 
 export const useListCharacter = () => {
   const publicKey = "752394fc40641a008eaf8f55fe23ecca";
@@ -14,9 +15,17 @@ export const useListCharacter = () => {
 
   const [offset, setOffset] = useState(0);
 
+  const [favoriteCharacters, setFavoriteCharacters] = useState(() => {
+    const localStorageData = localStorage.getItem("favoriteCharacters");
+    return localStorageData ? JSON.parse(localStorageData) : [];
+  });
+
   const [searchInput, setSearchInput] = useState("");
 
-  const [order, setOrder] = useState("asc");
+  const [filter, setFilter] = useState<FilterObject>({
+    orderBy: "asc",
+    showFavorite: false,
+  });
 
   const params = {
     ts: timeStamp,
@@ -24,7 +33,7 @@ export const useListCharacter = () => {
     hash: hash,
     offset: offset,
     ...(searchInput !== "" && { nameStartsWith: searchInput }),
-    ...(order === "asc" ? { orderBy: "name" } : { orderBy: "-name" }),
+    ...(filter.orderBy === "asc" ? { orderBy: "name" } : { orderBy: "-name" }),
   };
 
   const List = async () => {
@@ -37,7 +46,7 @@ export const useListCharacter = () => {
   console.log(searchInput);
 
   const { data, isLoading, isRefetching, refetch } = useQuery(
-    ["characterList", offset, searchInput, order],
+    ["characterList", offset, searchInput, filter],
     () => List()
   );
 
@@ -48,8 +57,10 @@ export const useListCharacter = () => {
     refetch,
     setOffset,
     setSearchInput,
-    order,
-    setOrder,
+    filter,
+    setFilter,
+    favoriteCharacters,
+    setFavoriteCharacters,
     limit,
   };
 };

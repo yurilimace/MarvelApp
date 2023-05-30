@@ -1,46 +1,64 @@
-// import ToggleSwitch from "../../assets/toggle_off.svg";
 import HeroIcon from "../../assets/ic_heroi.svg";
-import FavoriteIcon from "../../assets/favorito_01.svg";
+
 import "./Filter.css";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 
-interface FilterProps {
-  filterType: string;
-  setFilterType: (filterValue: string) => void;
+export interface FilterObject {
+  orderBy: "asc" | "dsc";
+  showFavorite: boolean;
 }
 
-export const Filter = ({ filterType, setFilterType }: FilterProps) => {
-  const FilterDefaultValue = () => {
-    if (filterType === "asc") {
+interface FilterProps {
+  filterType: FilterObject;
+  setFilterType: (filterValue: FilterObject) => void;
+  favoriteCharactersSize: number;
+}
+
+export const Filter = ({
+  filterType,
+  setFilterType,
+  favoriteCharactersSize,
+}: FilterProps) => {
+  const FilterOrderByDefaultValue = () => {
+    if (filterType.orderBy === "asc") {
       return true;
     }
     return false;
   };
 
-  const handleFilterChange = (value: boolean) => {
+  const handleFilterOrderByChange = (value: boolean) => {
     if (value) {
-      setFilterType("asc");
+      setFilterType({ ...filterType, orderBy: "asc" });
     } else {
-      setFilterType("dsc");
+      setFilterType({ ...filterType, orderBy: "dsc" });
     }
+  };
+
+  const handleFilterShowFavoriteCharacters = () => {
+    console.log("disparou");
+    setFilterType({ ...filterType, showFavorite: !filterType.showFavorite });
   };
 
   return (
     <div className="Phrase-container">
       <div className="ToggleSwitchContainer">
-        <span> Encontrados X herois </span>
+        <span> Encontrado {favoriteCharactersSize} heróis </span>
       </div>
       <div className="ToggleSwitchContainer">
         <img src={HeroIcon} />
         <span> Ordernar por nome - A/Z </span>
         <ToggleSwitch
-          defaultValue={FilterDefaultValue}
-          handleChange={handleFilterChange}
+          defaultValue={FilterOrderByDefaultValue}
+          handleChange={handleFilterOrderByChange}
         />
       </div>
       <div className="ToggleSwitchContainer">
-        <img src={FavoriteIcon} />
-        <span> Somente Favoritos </span>
+        <FavoriteButton
+          onClick={handleFilterShowFavoriteCharacters}
+          favoriteIcon={() => filterType.showFavorite}
+          title="Somente Favoritos"
+        />
       </div>
     </div>
   );

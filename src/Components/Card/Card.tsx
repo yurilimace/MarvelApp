@@ -1,14 +1,16 @@
 import { useState } from "react";
-import FavoriteIcon from "../../assets/favorito_01.svg";
-import UnfavoriteIcon from "../../assets/favorito_02.svg";
+
 import "./Card.css";
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 
 interface CardProps {
   name: string;
   image: string;
   id: number;
-  favoriteCharacterList: number[];
-  setFavoriteCharacterList: (arr: number[] | []) => void;
+  favoriteCharacterList: { id: number; name: string; image: string }[];
+  setFavoriteCharacterList: (
+    arr: { id: number; name: string; image: string }[] | []
+  ) => void;
 }
 
 export const Card = ({
@@ -19,19 +21,20 @@ export const Card = ({
   setFavoriteCharacterList,
 }: CardProps) => {
   const isFavoriteCharacter = () => {
-    return favoriteCharacterList.some((el: number) => el === id);
+    return favoriteCharacterList.some((el) => el.id === id);
   };
 
   const HandleClick = () => {
     if (isFavoriteCharacter()) {
-      const newArr = favoriteCharacterList.filter((el) => el != id);
+      const newArr = favoriteCharacterList.filter((el) => el.id != id);
       setFavoriteCharacterList(newArr);
       localStorage.setItem("favoriteCharacters", JSON.stringify(newArr));
+      return;
     }
 
     // adicionar personagem da lista
     if (favoriteCharacterList.length < 5) {
-      const newArr = [...favoriteCharacterList, id];
+      const newArr = [...favoriteCharacterList, { id, name, image }];
       setFavoriteCharacterList(newArr);
       localStorage.setItem("favoriteCharacters", JSON.stringify(newArr));
     }
@@ -43,13 +46,10 @@ export const Card = ({
       <div className="CardDivider"></div>
       <div className="CardBody">
         <span> {name} </span>
-        <button onClick={() => HandleClick()} className="FavoriteButton">
-          {isFavoriteCharacter() ? (
-            <img src={FavoriteIcon} />
-          ) : (
-            <img src={UnfavoriteIcon} />
-          )}
-        </button>
+        <FavoriteButton
+          onClick={HandleClick}
+          favoriteIcon={isFavoriteCharacter}
+        />
       </div>
     </div>
   );

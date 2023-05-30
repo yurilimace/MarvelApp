@@ -12,3 +12,7 @@
 .ToggleSwitchContainer > * {
   margin-right: 10px;
 }
+
+.ToggleSwitchContainer > button {
+  width: auto;
+}

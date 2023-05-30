@@ -1,0 +1,20 @@
+.FavoriteButton {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: min-content;
+  background-color: transparent;
+}
+
+.FavoriteButton:focus {
+  border: none;
+  outline: none;
+}
+
+.FavoriteButton > img {
+  margin-right: 10px;
+}
+
+.FavoriteButton > span {
+  color: black;
+}
