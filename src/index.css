@@ -2,6 +2,9 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  display: flex;
+  width: 100%;
+  justify-content: center;
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
@@ -12,6 +15,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 a {

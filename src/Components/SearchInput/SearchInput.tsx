@@ -2,9 +2,10 @@ import "./SearchInput.css";
 
 interface SearchInputProps {
   setSearchInput: (value: string) => void;
+  aligment?: string;
 }
 
-export const SearchInput = ({ setSearchInput }: SearchInputProps) => {
+export const SearchInput = ({ setSearchInput, aligment }: SearchInputProps) => {
   let timeout: any;
 
   const handleChange = (e: any) => {
@@ -16,8 +17,18 @@ export const SearchInput = ({ setSearchInput }: SearchInputProps) => {
     }, 500);
   };
 
+  const selectAligmentType = () => {
+    if (aligment === "left") {
+      return "SearchInputContainerLeftAlign";
+    }
+    if (aligment === "right") {
+      return "SearchInputContainerRightAlign";
+    }
+    return "";
+  };
+
   return (
-    <div className="SearchInputContainer">
+    <div className={`SearchInputContainer ${selectAligmentType()}`}>
       <input
         onChange={(e) => handleChange(e)}
         className="SearchInput"

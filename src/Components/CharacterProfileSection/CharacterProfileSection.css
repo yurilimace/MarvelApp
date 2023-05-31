@@ -1,0 +1,20 @@
+.CharacterProfileContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 0;
+}
+
+.CharacterComicsCounter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.CharacterComicsCounter > img {
+  margin-right: 15px;
+}
+
+.LastComicReleasedText {
+  font-size: 12px;
+}

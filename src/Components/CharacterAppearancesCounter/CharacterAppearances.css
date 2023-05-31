@@ -1,0 +1,19 @@
+.CharacterAppearancesContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.CharacterAppearancesItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.CharacterAppearancesItem > div {
+  display: flex;
+  align-items: center;
+  padding: 8px 0px;
+}
+
+.CharacterAppearancesContainer img {
+  margin-right: 15px;
+}

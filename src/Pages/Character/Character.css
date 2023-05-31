@@ -1,0 +1,47 @@
+.CharacterPageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  padding: 32px 128px;
+  background-color: #e7f6e7;
+}
+
+/* .CharacterPageContainer > nav {
+  margin-bottom: 5%;
+} */
+
+.CharacterContent {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 2fr;
+  gap: 25%;
+  padding: 128px 64px;
+  z-index: 0;
+}
+
+.CharacterNameOnBackgroud {
+  position: absolute;
+  font-size: 250px;
+  color: #f7fcf7;
+  margin-left: 20%;
+  z-index: -1;
+  top: 142px;
+  word-break: keep-all;
+}
+
+.CharacterProfileImage {
+  height: 350px;
+  border-radius: 25px;
+}
+
+.LastComicsShowCase {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.LastComicsShowCase img {
+  height: 150px;
+}

@@ -1,8 +1,9 @@
 // import "./App.css";
+import { RouterProvider } from "react-router-dom";
 import { Home } from "./Pages/Home/Home";
-import { ContextComponent } from "./context";
-import { ContextConsumer } from "./contextConsumer";
+
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Router } from "./router";
 
 function App() {
   const queryClient = new QueryClient({
@@ -18,7 +19,7 @@ function App() {
         <ContextConsumer />
       </ContextComponent> */}
       <QueryClientProvider client={queryClient}>
-        <Home />
+        <RouterProvider router={Router} />
       </QueryClientProvider>
     </>
   );

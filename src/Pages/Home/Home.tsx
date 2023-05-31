@@ -2,6 +2,7 @@ import "./Home.css";
 
 import { Card } from "../../Components/Card/Card";
 import { Logo } from "../../Components/Logo/Logo";
+import MarvelLogo from "../../assets/logo.svg";
 import { SearchInput } from "../../Components/SearchInput/SearchInput";
 import { Filter } from "../../Components/Filter/Filter";
 import { useListCharacter } from "../../Hooks/useListCharacter/useCharacter";
@@ -27,7 +28,7 @@ export const Home = () => {
 
   return (
     <div className="HomeContainer">
-      <Logo />
+      <Logo src={MarvelLogo} />
       <h2 className="Subtitle">
         <strong> EXPLORE O UNIVERSO </strong>
       </h2>

@@ -1,9 +1,16 @@
 .SearchInputContainer {
   width: 100%;
-  padding: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.SearchInputContainerLeftAlign {
+  justify-content: start;
+}
+
+.SearchInputContainerRightAlign {
+  justify-content: end;
 }
 
 .SearchInput {
