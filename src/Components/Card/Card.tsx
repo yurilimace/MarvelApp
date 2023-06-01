@@ -12,28 +12,14 @@ interface CardProps {
 }
 
 export const Card = ({ name, image, id }: CardProps) => {
-  const context = useContext(ContextTest);
-
-  const isFavoriteCharacter = () => {
-    if (context?.contextValue) {
-      return context?.contextValue.some((el) => el.id === id);
-    }
-    return false;
-  };
+  const { IsFavoriteCharacter, RemoveFavoriteCharacter, AddFavoriteCharacter } =
+    useContext(ContextTest);
 
   const HandleClick = () => {
-    if (isFavoriteCharacter()) {
-      const newArr = context?.contextValue.filter((el) => el.id != id);
-      context?.updateContextValue(newArr || []);
-      localStorage.setItem("favoriteCharacters", JSON.stringify(newArr || []));
-      return;
-    }
-
-    // adicionar personagem da lista
-    if (context?.contextValue && context?.contextValue.length < 5) {
-      const newArr = [...context.contextValue, { id, name, image }];
-      context?.updateContextValue(newArr);
-      localStorage.setItem("favoriteCharacters", JSON.stringify(newArr));
+    if (IsFavoriteCharacter(id)) {
+      RemoveFavoriteCharacter(id);
+    } else {
+      AddFavoriteCharacter({ id, name, image });
     }
   };
 
@@ -48,7 +34,7 @@ export const Card = ({ name, image, id }: CardProps) => {
         </Link>
         <FavoriteButton
           onClick={HandleClick}
-          favoriteIcon={isFavoriteCharacter}
+          favoriteIcon={() => IsFavoriteCharacter(id)}
         />
       </div>
     </div>
