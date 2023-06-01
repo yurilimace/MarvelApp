@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { BaseAPI } from "../../services";
 import { useQuery } from "react-query";
+import { MarvelApiResponse, MarvelComicsResponse } from "../../types";
 
 export const useCharacterDetail = () => {
   const publicKey = "752394fc40641a008eaf8f55fe23ecca";
@@ -10,11 +11,6 @@ export const useCharacterDetail = () => {
   const timeStamp = Number(new Date());
 
   const hash = md5(timeStamp + privateKey + publicKey);
-
-  const [favoriteCharacters, setFavoriteCharacters] = useState(() => {
-    const localStorageData = localStorage.getItem("favoriteCharacters");
-    return localStorageData ? JSON.parse(localStorageData) : [];
-  });
 
   const routeParams = useParams();
 
@@ -24,43 +20,56 @@ export const useCharacterDetail = () => {
     hash: hash,
   };
 
-  const getCharacterDetails = async () => {
+  const GetCharacter = async () => {
     const {
       data: {
         data: { results: characterDetail },
       },
-    } = await BaseAPI.get(`/characters/${routeParams.id}`, { params: params });
+    } = await BaseAPI.get<MarvelApiResponse>(`/characters/${routeParams.id}`, {
+      params: params,
+    });
+    return characterDetail[0];
+  };
 
+  const GetCharacterComics = async () => {
     const {
       data: {
         data: { results: characterStories },
       },
-    } = await BaseAPI.get(`/characters/${routeParams.id}/comics`, {
-      params: { ...params, orderBy: "-onsaleDate" },
-    });
+    } = await BaseAPI.get<MarvelComicsResponse>(
+      `/characters/${routeParams.id}/comics`,
+      {
+        params: { ...params, orderBy: "-onsaleDate" },
+      }
+    );
 
-    const detailObject = {
-      characterName: characterDetail[0].name,
-      characterDescprition: characterDetail[0].description,
+    return characterStories;
+  };
+
+  const { data: characterDetail, isLoading: isLoadingCharacterDetail } =
+    useQuery("characterDetail", () => GetCharacter());
+  const { data: characterStory, isLoading: isLoadingCharacterStories } =
+    useQuery("characterStoryDetail", () => GetCharacterComics());
+
+  const formatedData = characterDetail &&
+    characterStory && {
+      name: characterDetail?.name,
+      id: characterDetail?.id,
+      description: characterDetail?.description,
       image:
-        characterDetail[0].thumbnail.path +
+        characterDetail?.thumbnail.path +
         "." +
-        characterDetail[0].thumbnail.extension,
-      id: characterDetail[0].id,
-      stories: characterStories.map((story: any) => ({
+        characterDetail?.thumbnail.extension,
+      stories: characterStory.map((story) => ({
         title: story.title,
         image: story.thumbnail.path + "." + story.thumbnail.extension,
         lastReleaseDate: story.dates[0].date,
       })),
     };
 
-    return detailObject;
-  };
-
-  const { data } = useQuery("characterDetail", () => getCharacterDetails());
-
   return {
     routeParams,
-    data,
+    data: formatedData,
+    isLoading: isLoadingCharacterDetail || isLoadingCharacterStories,
   };
 };
