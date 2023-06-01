@@ -23,11 +23,16 @@ export const useListCharacter = () => {
     showFavorite: false,
   });
 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [lastPage, setLastPage] = useState(0);
+
+  console.log(currentPage);
+
   const params = {
     ts: timeStamp,
     apikey: publicKey,
     hash: hash,
-    offset: offset,
+    offset: limit * currentPage,
     ...(searchInput !== "" && { nameStartsWith: searchInput }),
     ...(filter.orderBy === "asc" ? { orderBy: "name" } : { orderBy: "-name" }),
   };
@@ -35,17 +40,19 @@ export const useListCharacter = () => {
   const List = async () => {
     const {
       data: {
-        data: { results: response },
+        data: { results: response, total: TotalItens },
       },
     } = await BaseAPI.get<MarvelApiResponse>("/characters", {
       params: { ...params },
     });
 
+    setLastPage(Math.ceil(TotalItens / limit));
+
     return response;
   };
 
   const { data, isLoading, isRefetching, refetch } = useQuery(
-    ["characterList", offset, searchInput, filter],
+    ["characterList", offset, searchInput, filter, currentPage],
     () => List()
   );
 
@@ -66,5 +73,8 @@ export const useListCharacter = () => {
     filter,
     setFilter,
     limit,
+    currentPage,
+    setCurrentPage,
+    lastPage,
   };
 };

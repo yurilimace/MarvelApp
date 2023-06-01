@@ -5,7 +5,7 @@ import { useCharacterDetail } from "../../Hooks/useCharacterDetail/useCharacterD
 import "./Character.css";
 
 export const Character = () => {
-  const { routeParams, data, isLoading } = useCharacterDetail();
+  const { data, isLoading } = useCharacterDetail();
 
   return (
     <div className="CharacterPageContainer">

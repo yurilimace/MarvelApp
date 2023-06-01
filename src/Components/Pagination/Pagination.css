@@ -1,7 +1,36 @@
 .PaginationContainer {
   display: flex;
+  align-items: center;
 }
 
 .PaginationContainer > button {
   margin-right: 10px;
+}
+
+.PaginationButton {
+  background-color: white;
+  color: red;
+  border: transparent;
+}
+
+.PaginationButton:hover {
+  background-color: red;
+  color: white;
+  border: transparent;
+}
+
+.PaginationButton:focus {
+  outline: none;
+}
+
+.PaginationButton.Active {
+  background-color: red;
+  color: white;
+  outline: none;
+}
+
+.PaginationSpacer {
+  padding: 0px 10px;
+  color: red;
+  font-size: 25px;
 }

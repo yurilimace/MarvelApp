@@ -23,6 +23,9 @@ export const Home = () => {
     isRefetching,
     filter,
     setFilter,
+    currentPage,
+    setCurrentPage,
+    lastPage,
   } = useListCharacter();
 
   const context = useContext(ContextTest);
@@ -53,8 +56,11 @@ export const Home = () => {
           <GridShowcase showFavorite={filter.showFavorite} data={data} />
         </>
       )}
-
-      <Pagination />
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        lastPage={lastPage}
+      />
     </div>
   );
 };
