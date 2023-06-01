@@ -7,6 +7,8 @@ import "./Character.css";
 export const Character = () => {
   const { data, isLoading } = useCharacterDetail();
 
+  console.log(data?.stories);
+
   return (
     <div className="CharacterPageContainer">
       <Navbar />

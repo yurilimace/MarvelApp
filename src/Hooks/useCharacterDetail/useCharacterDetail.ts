@@ -1,9 +1,13 @@
 import md5 from "md5";
-import { useState } from "react";
+
 import { useParams } from "react-router-dom";
 import { BaseAPI } from "../../services";
 import { useQuery } from "react-query";
-import { MarvelApiResponse, MarvelComicsResponse } from "../../types";
+import {
+  ComicFormated,
+  MarvelApiResponse,
+  MarvelComicsResponse,
+} from "../../types";
 
 export const useCharacterDetail = () => {
   const publicKey = "752394fc40641a008eaf8f55fe23ecca";
@@ -60,11 +64,16 @@ export const useCharacterDetail = () => {
         characterDetail?.thumbnail.path +
         "." +
         characterDetail?.thumbnail.extension,
-      stories: characterStory.map((story) => ({
-        title: story.title,
-        image: story.thumbnail.path + "." + story.thumbnail.extension,
-        lastReleaseDate: story.dates[0].date,
-      })),
+      stories: characterStory?.reduce((acc: ComicFormated[], story, index) => {
+        if (index < 7) {
+          acc.push({
+            title: story.title,
+            image: story.thumbnail.path + "." + story.thumbnail.extension,
+            lastReleaseDate: story.dates[0].date,
+          });
+        }
+        return acc;
+      }, []),
     };
 
   return {
