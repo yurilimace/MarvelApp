@@ -4,10 +4,7 @@ import { useCharacterDetail } from "../../Hooks/useCharacterDetail/useCharacterD
 import "./Character.css";
 
 export const Character = () => {
-  const arr = [3, 7, 12, 9, 5, 1, 8, 6, 2, 4, 15];
   const { routeParams, data } = useCharacterDetail();
-
-  console.log(data?.stories);
 
   return (
     <div className="CharacterPageContainer">

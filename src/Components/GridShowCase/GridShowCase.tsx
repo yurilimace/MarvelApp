@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { Card } from "../Card/Card";
 import { ContextTest } from "../../Context/context";
+import { CharacterFormated } from "../../types";
 
 interface GridShowCaseProps {
   showFavorite: boolean;
-  data: any;
+  data: CharacterFormated[];
 }
 
 export const GridShowcase = ({ showFavorite, data }: GridShowCaseProps) => {
@@ -13,16 +14,11 @@ export const GridShowcase = ({ showFavorite, data }: GridShowCaseProps) => {
   return (
     <div className="CardGridContainer">
       {!showFavorite &&
-        data.map((el: any) => (
-          <Card
-            key={el.id}
-            id={el.id}
-            name={el.name}
-            image={el.thumbnail.path + "." + el.thumbnail.extension}
-          />
+        data.map((el) => (
+          <Card key={el.id} id={el.id} name={el.name} image={el.image} />
         ))}
       {showFavorite &&
-        context?.contextValue.map((el: any) => (
+        context?.contextValue.map((el) => (
           <Card key={el.id} id={el.id} name={el.name} image={el.image} />
         ))}
     </div>

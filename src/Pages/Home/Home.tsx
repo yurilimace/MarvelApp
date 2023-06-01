@@ -38,9 +38,9 @@ export const Home = () => {
         voce ama - e aqueles que você descobrirá em breve{" "}
       </span>
 
-      {isLoading || isRefetching ? (
-        <Loading />
-      ) : (
+      {(isLoading || isRefetching) && <Loading />}
+
+      {data && (
         <>
           <SearchInput setSearchInput={setSearchInput} />
           <Filter

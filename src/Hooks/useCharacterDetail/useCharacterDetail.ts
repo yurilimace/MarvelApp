@@ -46,6 +46,7 @@ export const useCharacterDetail = () => {
         characterDetail[0].thumbnail.path +
         "." +
         characterDetail[0].thumbnail.extension,
+      id: characterDetail[0].id,
       stories: characterStories.map((story: any) => ({
         title: story.title,
         image: story.thumbnail.path + "." + story.thumbnail.extension,

@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { BaseAPI } from "../../services";
 import { useState } from "react";
 import { FilterObject } from "../../Components/Filter/Filter";
+import { MarvelApiResponse } from "../../types";
 
 export const useListCharacter = () => {
   const publicKey = "752394fc40641a008eaf8f55fe23ecca";
@@ -32,21 +33,31 @@ export const useListCharacter = () => {
   };
 
   const List = async () => {
-    const response = await BaseAPI.get("/characters", {
+    const {
+      data: {
+        data: { results: response },
+      },
+    } = await BaseAPI.get<MarvelApiResponse>("/characters", {
       params: { ...params },
     });
-    return response.data.data.results;
-  };
 
-  console.log(searchInput);
+    return response;
+  };
 
   const { data, isLoading, isRefetching, refetch } = useQuery(
     ["characterList", offset, searchInput, filter],
     () => List()
   );
 
+  const formatedData = data?.map((char) => ({
+    name: char.name,
+    id: char.id,
+    description: char.description,
+    image: char.thumbnail.path + "." + char.thumbnail.extension,
+  }));
+
   return {
-    data,
+    data: formatedData,
     isLoading,
     isRefetching,
     refetch,

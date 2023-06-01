@@ -1,21 +1,16 @@
 import { createContext, useState } from "react";
+import { CharacterFormated } from "../types";
 
 interface ContextComponentProps {
   children: React.ReactNode;
 }
 
-type Character = {
-  id: number;
-  image: string;
-  name: string;
-};
-
 type Context = {
-  contextValue: Character[] | [];
+  contextValue: CharacterFormated[] | [];
   IsFavoriteCharacter: (id: number) => boolean;
-  AddFavoriteCharacter: (char: Character) => void;
+  AddFavoriteCharacter: (char: CharacterFormated) => void;
   RemoveFavoriteCharacter: (id: number) => void;
-  updateContextValue: (characters: Character[]) => void;
+  updateContextValue: (characters: CharacterFormated[]) => void;
 };
 
 const contextInitialValue = {
@@ -29,16 +24,16 @@ const contextInitialValue = {
 export const ContextTest = createContext<Context>(contextInitialValue);
 
 export const ContextComponent = ({ children }: ContextComponentProps) => {
-  const [contextValue, setContextValue] = useState<Character[]>(() => {
+  const [contextValue, setContextValue] = useState<CharacterFormated[]>(() => {
     const localStorageData = localStorage.getItem("favoriteCharacters");
     return localStorageData ? JSON.parse(localStorageData) : [];
   });
 
   const IsFavoriteCharacter = (id: number) => {
-    return contextValue.some((el: Character) => el.id === id);
+    return contextValue.some((el: CharacterFormated) => el.id === id);
   };
 
-  const AddFavoriteCharacter = (char: Character) => {
+  const AddFavoriteCharacter = (char: CharacterFormated) => {
     if (contextValue.length < 5) {
       const newArr = [...contextValue, char];
       setContextValue(newArr);
@@ -52,7 +47,7 @@ export const ContextComponent = ({ children }: ContextComponentProps) => {
     localStorage.setItem("favoriteCharacters", JSON.stringify(newArr));
   };
 
-  const updateContextValue = (newArr: Character[]) => {
+  const updateContextValue = (newArr: CharacterFormated[]) => {
     setContextValue(newArr);
   };
 
