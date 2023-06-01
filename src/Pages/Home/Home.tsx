@@ -6,10 +6,11 @@ import MarvelLogo from "../../assets/logo.svg";
 import { SearchInput } from "../../Components/SearchInput/SearchInput";
 import { Filter } from "../../Components/Filter/Filter";
 import { useListCharacter } from "../../Hooks/useListCharacter/useCharacter";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Pagination } from "../../Components/Pagination/Pagination";
 import { GridShowcase } from "../../Components/GridShowCase/GridShowCase";
 import { Loading } from "../../Components/Loading/Loading";
+import { ContextTest } from "../../Context/context";
 
 export const Home = () => {
   const {
@@ -22,9 +23,9 @@ export const Home = () => {
     isRefetching,
     filter,
     setFilter,
-    favoriteCharacters,
-    setFavoriteCharacters,
   } = useListCharacter();
+
+  const context = useContext(ContextTest);
 
   return (
     <div className="HomeContainer">
@@ -46,15 +47,10 @@ export const Home = () => {
             filterType={filter}
             setFilterType={setFilter}
             favoriteCharactersSize={
-              filter.showFavorite ? favoriteCharacters.length : data.length
+              filter.showFavorite ? context?.contextValue.length : data.length
             }
           />
-          <GridShowcase
-            showFavorite={filter.showFavorite}
-            data={data}
-            favoriteCharacters={favoriteCharacters}
-            setFavoriteCharacters={setFavoriteCharacters}
-          />
+          <GridShowcase showFavorite={filter.showFavorite} data={data} />
         </>
       )}
 

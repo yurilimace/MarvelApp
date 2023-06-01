@@ -15,11 +15,6 @@ export const useListCharacter = () => {
 
   const [offset, setOffset] = useState(0);
 
-  const [favoriteCharacters, setFavoriteCharacters] = useState(() => {
-    const localStorageData = localStorage.getItem("favoriteCharacters");
-    return localStorageData ? JSON.parse(localStorageData) : [];
-  });
-
   const [searchInput, setSearchInput] = useState("");
 
   const [filter, setFilter] = useState<FilterObject>({
@@ -59,8 +54,6 @@ export const useListCharacter = () => {
     setSearchInput,
     filter,
     setFilter,
-    favoriteCharacters,
-    setFavoriteCharacters,
     limit,
   };
 };

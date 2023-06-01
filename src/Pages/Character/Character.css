@@ -44,4 +44,15 @@
 
 .LastComicsShowCase img {
   height: 150px;
+  width: 100px;
+}
+
+.LastComicsShowCaseItem {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.LastComicsShowCaseItem > span {
+  margin-top: 10px;
 }
