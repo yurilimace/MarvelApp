@@ -1,6 +1,14 @@
 .HomeContainer {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.HomeHeader {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 16px;
@@ -18,13 +26,6 @@
   padding: 0 16px 16px;
 }
 
-.CardGridContainer {
-  margin-top: 32px;
-  display: grid;
-  gap: 16px;
-  width: 100%;
-}
-
 .Slider {
   width: 100px;
 }
@@ -34,10 +35,6 @@
   .HomeContainer {
     padding: 24px;
   }
-
-  .CardGridContainer {
-    grid-template-columns: 0.5fr 0.5fr;
-  }
 }
 
 /* Media Query para telas de laptops */
@@ -45,20 +42,10 @@
   .HomeContainer {
     padding: 32px;
   }
-
-  .CardGridContainer {
-    gap: 24px;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 }
 
 @media (min-width: 1440px) {
   .HomeContainer {
     padding: 32px;
-  }
-
-  .CardGridContainer {
-    gap: 24px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

@@ -32,15 +32,17 @@ export const Home = () => {
 
   return (
     <div className="HomeContainer">
-      <Logo src={MarvelLogo} />
-      <h2 className="Subtitle">
-        <strong> EXPLORE O UNIVERSO </strong>
-      </h2>
-      <span className="SubHeader">
-        mergulhe no domínio deslumbrante de todos os personagens clássicos que
-        voce ama - e aqueles que você descobrirá em breve{" "}
-      </span>
-      <SearchInput setSearchInput={setSearchInput} />
+      <div className="HomeHeader">
+        <Logo src={MarvelLogo} />
+        <h2 className="Subtitle">
+          <strong> EXPLORE O UNIVERSO </strong>
+        </h2>
+        <span className="SubHeader">
+          mergulhe no domínio deslumbrante de todos os personagens clássicos que
+          voce ama - e aqueles que você descobrirá em breve{" "}
+        </span>
+        <SearchInput setSearchInput={setSearchInput} />
+      </div>
 
       {(isLoading || isRefetching) && <Loading />}
 

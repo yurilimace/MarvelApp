@@ -4,20 +4,20 @@
   justify-content: start;
   align-items: start;
   width: 100%;
-  padding: 32px 128px;
+  padding: 32px 127px;
   background-color: #e7f6e7;
 }
 
-/* .CharacterPageContainer > nav {
-  margin-bottom: 5%;
-} */
+.CharacterPageContainer .loader {
+  margin: 15% auto;
+}
 
 .CharacterContent {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 2fr;
   gap: 25%;
-  padding: 72px 64px;
+
   z-index: 0;
   align-items: center;
 }
@@ -32,6 +32,7 @@
   word-break: keep-all;
   width: fit-content;
   text-align: center;
+  word-break: break-all;
 }
 
 .CharacterProfileImage {
@@ -42,9 +43,10 @@
 .LastComicsShowCase {
   display: grid;
   width: 100%;
-  height: 200px;
   overflow-y: scroll;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-self: center;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  height: 150px;
   justify-self: center;
 }
 
@@ -70,7 +72,7 @@
 
 @media (min-width: 767px) {
   .CharacterContent {
-    padding: 72px 0px;
+    padding: 40px 0px;
   }
   .CharacterProfileImage {
     height: 250px;
@@ -78,13 +80,19 @@
   }
 
   .LastComicsShowCase {
-    height: 160px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    height: 150px;
+    justify-self: center;
+  }
+  .CharacterNameOnBackgroud {
+    margin-left: 20%;
+    font-size: 80px;
   }
 }
 
 @media (min-width: 1024px) {
   .CharacterContent {
-    padding: 72px 0px;
+    padding: 40px 40px;
   }
   .CharacterProfileImage {
     height: 250px;
@@ -92,15 +100,34 @@
   }
 
   .LastComicsShowCase {
-    display: grid;
-    width: 100%;
-    height: 200px;
-    overflow-y: scroll;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    height: 150px;
     justify-self: center;
   }
 
   .CharacterNameOnBackgroud {
     margin-left: 20%;
+    font-size: 80px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .CharacterContent {
+    padding: 40px 40px;
+  }
+  .CharacterProfileImage {
+    height: 250px;
+    border-radius: 25px;
+  }
+
+  .LastComicsShowCase {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    height: 200px;
+    justify-self: center;
+  }
+
+  .CharacterNameOnBackgroud {
+    margin-left: 20%;
+    font-size: 100px;
   }
 }

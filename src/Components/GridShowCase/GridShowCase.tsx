@@ -3,6 +3,8 @@ import { Card } from "../Card/Card";
 import { ContextTest } from "../../Context/context";
 import { CharacterFormated } from "../../types";
 
+import "./GridShowCase.css";
+
 interface GridShowCaseProps {
   showFavorite: boolean;
   data: CharacterFormated[];
