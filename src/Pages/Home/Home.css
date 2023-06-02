@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 32px;
+  padding: 16px;
 }
 
 .CenterLogo {
@@ -15,18 +15,50 @@
 }
 
 .SubHeader {
-  padding: 0 32px 32px;
+  padding: 0 16px 16px;
 }
 
 .CardGridContainer {
-  margin-top: 50px;
+  margin-top: 32px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16px;
   width: 100%;
-  /* height: 400px; */
-  /* overflow-y: scroll; */
 }
 
 .Slider {
   width: 100px;
+}
+
+/* Media Query para telas de tablets */
+@media (min-width: 767px) {
+  .HomeContainer {
+    padding: 24px;
+  }
+
+  .CardGridContainer {
+    grid-template-columns: 0.5fr 0.5fr;
+  }
+}
+
+/* Media Query para telas de laptops */
+@media (min-width: 1024px) {
+  .HomeContainer {
+    padding: 32px;
+  }
+
+  .CardGridContainer {
+    gap: 24px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1440px) {
+  .HomeContainer {
+    padding: 32px;
+  }
+
+  .CardGridContainer {
+    gap: 24px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }

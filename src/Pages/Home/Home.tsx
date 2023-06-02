@@ -40,12 +40,12 @@ export const Home = () => {
         mergulhe no domínio deslumbrante de todos os personagens clássicos que
         voce ama - e aqueles que você descobrirá em breve{" "}
       </span>
+      <SearchInput setSearchInput={setSearchInput} />
 
       {(isLoading || isRefetching) && <Loading />}
 
       {data && (
         <>
-          <SearchInput setSearchInput={setSearchInput} />
           <Filter
             filterType={filter}
             setFilterType={setFilter}

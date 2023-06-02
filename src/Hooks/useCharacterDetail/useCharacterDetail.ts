@@ -65,13 +65,12 @@ export const useCharacterDetail = () => {
         "." +
         characterDetail?.thumbnail.extension,
       stories: characterStory?.reduce((acc: ComicFormated[], story, index) => {
-        if (index < 7) {
-          acc.push({
-            title: story.title,
-            image: story.thumbnail.path + "." + story.thumbnail.extension,
-            lastReleaseDate: story.dates[0].date,
-          });
-        }
+        acc.push({
+          title: story.title,
+          image: story.thumbnail.path + "." + story.thumbnail.extension,
+          lastReleaseDate: story.dates[0].date,
+        });
+
         return acc;
       }, []),
     };

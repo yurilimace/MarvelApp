@@ -6,11 +6,11 @@
 }
 
 .SearchInputContainerLeftAlign {
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .SearchInputContainerRightAlign {
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .SearchInput {
@@ -32,4 +32,18 @@
 
 .SearchInput:focus-visible {
   outline: none;
+}
+
+@media (min-width: 1024px) {
+  .SearchInput {
+    padding-left: 4rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .SearchInput {
+    width: 55%;
+    height: 50px;
+    padding-left: 4rem;
+  }
 }
