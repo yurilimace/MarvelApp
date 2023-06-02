@@ -18,7 +18,7 @@ export const CharacterProfileSection = ({
   const date = parseISO(data.stories[0].lastReleaseDate);
   const formatedDate = date.toLocaleString("pt-br", {
     day: "2-digit",
-    month: "2-digit",
+    month: "short",
     year: "numeric",
   });
 
@@ -48,7 +48,7 @@ export const CharacterProfileSection = ({
       <p>{data.description}</p>
       <CharacterAppearances comicsAppearances={data.stories.length} />
       <span className="LastComicReleasedText">
-        Ultimo quadrinho:{formatedDate}
+        <strong> Ultimo quadrinho: {formatedDate} </strong>
       </span>
     </div>
   );

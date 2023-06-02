@@ -18,22 +18,24 @@ export const Character = () => {
       {data && (
         <>
           <div className="CharacterContent">
-            {/* <div className="CharacterNameOnBackgroud">
-          <span> {data?.characterDetail[0].name} </span>
-        </div> */}
+            <div className="CharacterNameOnBackgroud">
+              <span> {data.name} </span>
+            </div>
             <CharacterProfileSection data={data} />
             <div>
               <img className="CharacterProfileImage" src={data?.image} />
             </div>
           </div>
-          <span>
+          <span className="LastComicsShowCaseTitle">
             <strong> Ultimos lançamentos </strong>
           </span>
           <div className="LastComicsShowCase">
             {data?.stories.map((story) => (
               <div className="LastComicsShowCaseItem">
                 <img src={story.image} />
-                <span>{story.title} </span>
+                <span>
+                  <strong> {story.title} </strong>
+                </span>
               </div>
             ))}
           </div>
