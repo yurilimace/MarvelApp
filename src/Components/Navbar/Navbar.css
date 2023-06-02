@@ -3,6 +3,13 @@
   width: 100%;
 }
 .NavbarContainer > img {
-  width: 10%;
+  width: 15rem;
   margin-right: 50px;
+}
+
+@media (max-width: 767px) {
+  .NavbarContainer > img {
+    width: 200px;
+    margin-right: 50px;
+  }
 }
