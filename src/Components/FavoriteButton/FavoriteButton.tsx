@@ -1,6 +1,7 @@
-import "./FavoriteButton.css";
 import FavoriteIcon from "../../assets/favorito_01.svg";
 import UnfavoriteIcon from "../../assets/favorito_02.svg";
+import "./FavoriteButton.css";
+
 interface FavoriteButtonProps {
   onClick: () => void;
   favoriteIcon: () => boolean;
@@ -12,8 +13,13 @@ export const FavoriteButton = ({
   favoriteIcon,
   title,
 }: FavoriteButtonProps) => {
+  console.log(FavoriteIcon);
   return (
-    <button onClick={() => onClick()} className="FavoriteButton">
+    <button
+      data-testId={"favorite-button"}
+      onClick={() => onClick()}
+      className="FavoriteButton"
+    >
       {favoriteIcon() ? (
         <img src={FavoriteIcon} />
       ) : (

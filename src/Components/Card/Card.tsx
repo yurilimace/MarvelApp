@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
-
-import "./Card.css";
+import { useContext } from "react";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 import { Link } from "react-router-dom";
 import { ContextTest } from "../../Context/context";
+import "./Card.css";
 
 interface CardProps {
   name: string;
@@ -12,6 +11,7 @@ interface CardProps {
 }
 
 export const Card = ({ name, image, id }: CardProps) => {
+  console.log(ContextTest);
   const { IsFavoriteCharacter, RemoveFavoriteCharacter, AddFavoriteCharacter } =
     useContext(ContextTest);
 
@@ -25,7 +25,7 @@ export const Card = ({ name, image, id }: CardProps) => {
 
   return (
     <div className="CardContainer">
-      <img src={image} />
+      <img alt="card-image" src={image} />
       <div className="CardDivider"></div>
       <div className="CardBody">
         <Link to={`/character/${id}`}>
