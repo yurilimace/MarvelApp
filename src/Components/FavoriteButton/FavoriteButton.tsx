@@ -16,14 +16,14 @@ export const FavoriteButton = ({
   console.log(FavoriteIcon);
   return (
     <button
-      data-testId={"favorite-button"}
+      data-testid={"favorite-button"}
       onClick={() => onClick()}
       className="FavoriteButton"
     >
       {favoriteIcon() ? (
-        <img src={FavoriteIcon} />
+        <img alt="favoriteButtonIcon" src={FavoriteIcon} />
       ) : (
-        <img src={UnfavoriteIcon} />
+        <img alt="favoriteButtonIcon" src={UnfavoriteIcon} />
       )}
       {title && <span>{title} </span>}
     </button>

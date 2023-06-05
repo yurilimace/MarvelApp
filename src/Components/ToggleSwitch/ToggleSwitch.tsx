@@ -13,8 +13,9 @@ export const ToggleSwitch = ({
     handleChange(value);
   };
   return (
-    <label className="switch">
+    <label data-testid={"toggle-switch"} className="switch">
       <input
+        data-testid={"toggle-switch-input"}
         onChange={(e) => handleCheck(e.target.checked)}
         type="checkbox"
         checked={defaultValue()}

@@ -36,7 +36,6 @@ export const Filter = ({
   };
 
   const handleFilterShowFavoriteCharacters = () => {
-    console.log("disparou");
     setFilterType({ ...filterType, showFavorite: !filterType.showFavorite });
   };
 
@@ -46,7 +45,7 @@ export const Filter = ({
         <span> Encontrado {favoriteCharactersSize} heróis </span>
       </div>
       <div className="ToggleSwitchContainer">
-        <img src={HeroIcon} />
+        <img alt={"filter-hero-icon"} src={HeroIcon} />
         <span> Ordernar por nome - A/Z </span>
         <ToggleSwitch
           defaultValue={FilterOrderByDefaultValue}
