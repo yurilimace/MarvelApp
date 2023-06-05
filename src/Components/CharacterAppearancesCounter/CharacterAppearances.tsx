@@ -2,7 +2,7 @@ import Comics from "../../assets/ic_quadrinhos.svg";
 import Movies from "../../assets/ic_trailer.svg";
 import "./CharacterAppearances.css";
 
-interface CharacterAppearances {
+interface CharacterAppearancesProps {
   comicsAppearances: number;
   moviesAppearances?: number | 0;
 }
@@ -10,21 +10,21 @@ interface CharacterAppearances {
 export const CharacterAppearances = ({
   comicsAppearances,
   moviesAppearances = 0,
-}: CharacterAppearances) => {
+}: CharacterAppearancesProps) => {
   return (
     <div className={"CharacterAppearancesContainer"}>
       <div className="CharacterAppearancesItem">
         <span> Quadrinhos </span>
         <div>
-          <img src={Comics} />
-          <span> {comicsAppearances} </span>
+          <img alt="comicCounterIcon" src={Comics} />
+          <span data-testId={"comicCounter"}> {comicsAppearances} </span>
         </div>
       </div>
       <div className="CharacterAppearancesItem">
         <span> Filmes </span>
         <div>
-          <img src={Movies} />
-          <span> {moviesAppearances} </span>
+          <img alt="movieCounterIcon" src={Movies} />
+          <span data-testId={"movieCounter"}> {moviesAppearances} </span>
         </div>
       </div>
     </div>

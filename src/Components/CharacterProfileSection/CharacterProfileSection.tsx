@@ -1,4 +1,4 @@
-import { format, parseISO } from "date-fns";
+import { parseISO } from "date-fns";
 import { CharacterAppearances } from "../CharacterAppearancesCounter/CharacterAppearances";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
 import "./CharacterProfileSection.css";
@@ -48,7 +48,10 @@ export const CharacterProfileSection = ({
       <p>{data.description}</p>
       <CharacterAppearances comicsAppearances={data.stories.length} />
       <span className="LastComicReleasedText">
-        <strong> Ultimo quadrinho: {formatedDate} </strong>
+        <strong data-testId={"comicLastRelease"}>
+          {" "}
+          Ultimo quadrinho: {formatedDate}{" "}
+        </strong>
       </span>
     </div>
   );
