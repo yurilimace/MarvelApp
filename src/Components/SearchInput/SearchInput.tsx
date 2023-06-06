@@ -30,6 +30,7 @@ export const SearchInput = ({ setSearchInput, aligment }: SearchInputProps) => {
   return (
     <div className={`SearchInputContainer ${selectAligmentType()}`}>
       <input
+        data-testid={"searchInput"}
         onChange={(e) => handleChange(e)}
         className="SearchInput"
         placeholder="Procure por herois"

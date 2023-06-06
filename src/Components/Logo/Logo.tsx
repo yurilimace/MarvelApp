@@ -5,7 +5,7 @@ interface LogoProps {
 export const Logo = ({ src }: LogoProps) => {
   return (
     <>
-      <img className="Logo" src={src} />
+      <img alt={"logo-image"} className="Logo" src={src} />
     </>
   );
 };

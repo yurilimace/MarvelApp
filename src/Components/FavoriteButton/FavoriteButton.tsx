@@ -13,7 +13,6 @@ export const FavoriteButton = ({
   favoriteIcon,
   title,
 }: FavoriteButtonProps) => {
-  console.log(FavoriteIcon);
   return (
     <button
       data-testid={"favorite-button"}

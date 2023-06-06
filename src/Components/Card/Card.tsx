@@ -11,7 +11,6 @@ interface CardProps {
 }
 
 export const Card = ({ name, image, id }: CardProps) => {
-  console.log(ContextTest);
   const { IsFavoriteCharacter, RemoveFavoriteCharacter, AddFavoriteCharacter } =
     useContext(ContextTest);
 
