@@ -1,6 +1,5 @@
 // import "./App.css";
 import { RouterProvider } from "react-router-dom";
-import { Home } from "./Pages/Home/Home";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Router } from "./router";

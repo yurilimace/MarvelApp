@@ -64,7 +64,7 @@ export const useCharacterDetail = () => {
         characterDetail?.thumbnail.path +
         "." +
         characterDetail?.thumbnail.extension,
-      stories: characterStory?.reduce((acc: ComicFormated[], story, index) => {
+      stories: characterStory?.reduce((acc: ComicFormated[], story) => {
         acc.push({
           title: story.title,
           image: story.thumbnail.path + "." + story.thumbnail.extension,

@@ -1,12 +1,11 @@
 import "./Home.css";
 
-import { Card } from "../../Components/Card/Card";
 import { Logo } from "../../Components/Logo/Logo";
 import MarvelLogo from "../../assets/logo.svg";
 import { SearchInput } from "../../Components/SearchInput/SearchInput";
 import { Filter } from "../../Components/Filter/Filter";
 import { useListCharacter } from "../../Hooks/useListCharacter/useCharacter";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Pagination } from "../../Components/Pagination/Pagination";
 import { GridShowcase } from "../../Components/GridShowCase/GridShowCase";
 import { Loading } from "../../Components/Loading/Loading";
