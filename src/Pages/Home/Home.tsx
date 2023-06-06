@@ -16,9 +16,6 @@ export const Home = () => {
   const {
     data,
     isLoading,
-    limit,
-    refetch,
-    setOffset,
     setSearchInput,
     isRefetching,
     filter,
