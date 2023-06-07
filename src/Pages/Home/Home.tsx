@@ -42,7 +42,7 @@ export const Home = () => {
 
       {(isLoading || isRefetching) && <Loading />}
 
-      {data && (
+      {data && !isRefetching && (
         <>
           <Filter
             filterType={filter}
